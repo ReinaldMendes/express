@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const port = 4000;
 const corretora = require("./controllers/corretora.js");
+
 app.use(express.json());
+
 //Coomo pegar dados
 // app.get("/:usuario/:repositorio", (req, res) => {
 //   console.log("antes do ?:", req.params.usuario, req.params.repositorio); //capturar dados que estão vindo antes do ?
@@ -37,7 +39,7 @@ app.put("/corretora/:id", (req, resp) => {
   resp.status(code).json();
 });
 app.delete("/corretora/:id", (req, resp) => {
-  corretora.destroy(req.params.id);
+  const code = corretora.destroy(req.params.id);
   resp.status(code).json();
 });
 
